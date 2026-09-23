@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Student Registration Form</h1>
+    <form>
+        <fieldset>
+            <legend>Personal Information</legend>
+            <label for="fullName">Full Name :</label>
+            <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required>
+            <br><br>
+            <label for="email">Email :</label>
+            <input type="email" id="email" name="email" placeholder="example@gmail.com" required>
+            <br><br>
+            <label for="password">Password :</label>
+            <input type="password" id="password" name="password" placeholder="Enter the Password" required>
+            <br><br>
+            <label for="phoneNumber">Phone Number :</label>
+            <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Enter your Phone number">
+            <br><br>
+            <label for="date">Date :</label>
+            <input type="date" id="date" name="date">
+            <br><br>
+            <label for="time">Preferred Time :</label>
+            <input type="time" id="time" name="time">
+            <br><br>
+            <p>Gender :</p>
+            <input type="radio" id="male" name="gender">
+            <label for="male">Male</label>
+            <input type="radio" id="female" name="gender">
+            <label for="female">Female</label>
+            <input type="radio" id="other" name="gender">
+            <label for="other">Other</label>
+            <br><br>
+            <button>Submit</button>
+        </fieldset>
+        <fieldset>
+            <legend>Academic Information</legend>
+            <label for="course">Select Course :</label>
+            <select name="course" id="course" >
+                <option value="">-- Select Course --</option>
+                <option value="bca">B.C.A.</option>
+                <option value="btech">B.Tech.</option>
+                <option value="bpharma">B.Pharma.</option>
+                <option value="bsa">B.S.C.</option>
+                <option value="bba">B.B.A.</option>
+            </select>
+            <br><br>
+            <label for="programmint">Known Programming Languages :</label> <br>
+            <select name="programming" id="programming" multiple>
+                <option value="HTML">HTML</option>
+                <option value="CSS">CSS</option>
+                <option value="JS">JS</option>
+                <option value="React">React</option>
+                <option value="JAVA">JAVA</option>
+            </select>
+            <br><br>
+            <label for="age">Age :</label>
+            <input type="number" id="age" name="age" required>
+            <br><br>
+            <label for="skilllevel">Programming Skill Level :</label>
+            <input type="range" id="skilllevel" name="skilllevel" min="0" max="100" value="0">
+            <br><br>
+            <label for="city">City :</label>
+            <input type="text" id="city" name="city">
+            <datalist id="city">
+                <option value="Delhi">
+                <option value="Amritsar">
+                <option value="Hydrabad">
+                <option value="Benglore">
+                <option value="Mumbai">
+            </datalist>
+        </fieldset>
+    </form>
+</body>
+
+</html>

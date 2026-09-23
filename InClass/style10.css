@@ -1,0 +1,30 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+header{
+    background-color: rgb(6, 6, 82);
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+nav a{
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    padding: 5px 10px;
+}
+.logo{
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+}
+.logospan{
+    color: rgb(15, 192, 219);
+}
+.content{
+    padding: 20px;
+    display: flex;
+}
