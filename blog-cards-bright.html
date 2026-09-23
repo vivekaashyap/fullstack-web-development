@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog Cards - Bright</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,700;0,900;1,700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: #FFF8F0;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 24px;
+}
+
+.wrapper { max-width: 1120px; width: 100%; }
+
+.header {
+  margin-bottom: 52px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #B07850;
+  margin-bottom: 10px;
+}
+
+.headline {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(38px, 6vw, 68px);
+  font-weight: 900;
+  color: #1A1208;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+}
+
+.headline em { color: #E85C2C; font-style: italic; }
+
+.see-all {
+  font-size: 13px;
+  font-weight: 600;
+  color: #E85C2C;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  padding-bottom: 4px;
+  border-bottom: 1.5px solid #E85C2C;
+  transition: gap 0.2s;
+}
+
+.see-all:hover { gap: 12px; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.card {
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1.5px solid #F0E0D0;
+  transition: transform 0.35s cubic-bezier(0.16,1,0.3,1), box-shadow 0.35s cubic-bezier(0.16,1,0.3,1);
+  animation: pop 0.6s cubic-bezier(0.16,1,0.3,1) both;
+  cursor: pointer;
+}
+
+.card:nth-child(1) { animation-delay: 0.05s; --tag-bg: #FFF0E6; --tag-c: #C45020; --acc: #E85C2C; }
+.card:nth-child(2) { animation-delay: 0.15s; --tag-bg: #E6F7F0; --tag-c: #0F7A50; --acc: #1BAD72; }
+.card:nth-child(3) { animation-delay: 0.25s; --tag-bg: #E8EEFF; --tag-c: #2545C4; --acc: #3D5CE8; }
+
+@keyframes pop {
+  from { opacity: 0; transform: translateY(28px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 24px 48px rgba(0,0,0,0.10), 0 4px 12px rgba(0,0,0,0.06);
+}
+
+.img-wrap {
+  width: 100%;
+  aspect-ratio: 3/2;
+  overflow: hidden;
+  position: relative;
+}
+
+.img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s cubic-bezier(0.16,1,0.3,1);
+}
+
+.card:hover .img-wrap img { transform: scale(1.06); }
+
+.tag {
+  position: absolute;
+  top: 14px; left: 14px;
+  background: var(--tag-bg);
+  color: var(--tag-c);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 100px;
+}
+
+.body { padding: 22px 22px 18px; }
+
+.meta {
+  font-size: 11px;
+  color: #AAA098;
+  letter-spacing: 0.08em;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dot {
+  width: 3px; height: 3px;
+  border-radius: 50%;
+  background: #D0C8C0;
+  display: inline-block;
+}
+
+.title {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #1A1208;
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+
+.excerpt {
+  font-size: 12.5px;
+  line-height: 1.75;
+  color: #8A8078;
+  margin-bottom: 20px;
+}
+
+.sep {
+  height: 1px;
+  background: #F0E8E0;
+  margin-bottom: 18px;
+}
+
+.stats {
+  display: flex;
+}
+
+.stat {
+  flex: 1;
+  text-align: center;
+  padding: 10px 6px;
+  border-right: 1px solid #F0E8E0;
+}
+
+.stat:last-child { border-right: none; }
+
+.stat-num {
+  display: block;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--acc);
+  font-family: 'Fraunces', serif;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.stat-label {
+  display: block;
+  font-size: 9.5px;
+  color: #B0A898;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 18px;
+  padding: 10px 14px;
+  background: var(--tag-bg);
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--tag-c);
+  transition: opacity 0.2s;
+}
+
+.cta:hover { opacity: 0.8; }
+
+.arrow {
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: var(--acc);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 13px;
+  line-height: 1;
+}
+
+@media (max-width: 780px) {
+  .grid { grid-template-columns: 1fr; }
+  .header { flex-direction: column; align-items: flex-start; gap: 16px; }
+}
+</style>
+</head>
+<body>
+
+<div class="wrapper">
+  <div class="header">
+    <div>
+      <p class="eyebrow">— Latest from the journal</p>
+      <h1 class="headline">Featured<br><em>Stories</em></h1>
+    </div>
+    <a href="#" class="see-all">See all posts &rarr;</a>
+  </div>
+
+  <div class="grid">
+
+    <div class="card">
+      <div class="img-wrap">
+        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=700&q=85" alt="Mountain landscape with snow">
+        <span class="tag">Travel</span>
+      </div>
+      <div class="body">
+        <p class="meta">1 min ago <span class="dot"></span> 4 min read</p>
+        <h2 class="title">Post One</h2>
+        <p class="excerpt">Lorem ipsum dolor sit amet consectetur. Fusce vulputate, purus scelerisque dignissim turpis aliquam erat volutpat.</p>
+        <div class="sep"></div>
+        <div class="stats">
+          <div class="stat">
+            <span class="stat-num">8th</span>
+            <span class="stat-label">Rank</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">5123</span>
+            <span class="stat-label">Views</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">32</span>
+            <span class="stat-label">Comments</span>
+          </div>
+        </div>
+        <div class="cta">Read Article <div class="arrow">&#8594;</div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-wrap">
+        <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=600&q=80" alt="Landscape">
+        <span class="tag">Outdoors</span>
+      </div>
+      <div class="body">
+        <p class="meta">1 min ago <span class="dot"></span> 6 min read</p>
+        <h2 class="title">Post Two</h2>
+        <p class="excerpt">Adipiscing elit. Enaean accumsan torquent ipsum lorem dignissim ullamcorper quis dui libero facilisis.</p>
+        <div class="sep"></div>
+        <div class="stats">
+          <div class="stat">
+            <span class="stat-num">7th</span>
+            <span class="stat-label">Rank</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">1153</span>
+            <span class="stat-label">Views</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">21</span>
+            <span class="stat-label">Comments</span>
+          </div>
+        </div>
+        <div class="cta">Read Article <div class="arrow">&#8594;</div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-wrap">
+        <img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?w=600&q=80" alt="Forest">
+        <span class="tag">Culture</span>
+      </div>
+      <div class="body">
+        <p class="meta">1 min ago <span class="dot"></span> 5 min read</p>
+        <h2 class="title">Post Three</h2>
+        <p class="excerpt">Repudiandae cumque nunc diam. Ante per blandit nulla elit dictum provident ultrices quis dui.</p>
+        <div class="sep"></div>
+        <div class="stats">
+          <div class="stat">
+            <span class="stat-num">3rd</span>
+            <span class="stat-label">Rank</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">3021</span>
+            <span class="stat-label">Views</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">15</span>
+            <span class="stat-label">Comments</span>
+          </div>
+        </div>
+        <div class="cta">Read Article <div class="arrow">&#8594;</div></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

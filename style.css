@@ -1,0 +1,70 @@
+/* Reset basic styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Navbar container matching your vibrant cyan background */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #39285f; /* Cyan color from your image */
+    padding: 10px 40px;
+    height: 120px; /* Matched to the taller proportions in your image */
+}
+
+/* Logo and text alignment */
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 25px; /* Space between the image and the word 'Logo' */
+}
+
+.logo-img {
+    height: 90px; /* Keeps your lion badge large and clean */
+    width: auto;
+    background-color: white; /* Matches the white box in your image */
+    padding: 5px;
+    border-radius: 4px;
+}
+
+.logo-text {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #000000;
+}
+
+/* Middle navigation links layout */
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 60px; /* Even spacing between links */
+}
+
+.nav-links a {
+    text-decoration: underline; /* Matches the underlined look in your screenshot */
+    color: #0000ff; /* Blue link color from your screenshot */
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.nav-links a:hover {
+    color: #0000b3;
+}
+
+/* Right-aligned login link */
+.nav-login a {
+    text-decoration: none;
+    color: #000000;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* Dark section underneath the navbar */
+.hero-section {
+    background-color: #1e1e1e;
+    height: calc(100vh - 120px); /* Fills the rest of the screen viewport */
+}
