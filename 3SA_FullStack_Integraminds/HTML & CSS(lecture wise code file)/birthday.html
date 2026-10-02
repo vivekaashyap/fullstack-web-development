@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      main {
+        margin: auto;
+        height: 700px;
+        width: 600px;
+        box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.4);
+        position: relative;
+        overflow: hidden;
+      }
+
+      article {
+        opacity: 0;
+        background-color: pink;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: opacity 3s ease;
+      }
+      article h1 {
+        font-size: 50px;
+        margin-bottom: 0px;
+        color: brown;
+      }
+      article p {
+        font-size: 25px;
+        color: red;
+      }
+
+      section {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+      }
+
+      section > div {
+        background: linear-gradient(brown, red, brown);
+        height: 100%;
+        flex: 1;
+        border: 2px solid black;
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        transition:
+          transform 3s ease-in-out,
+          opacity 3s ease-in-out;
+      }
+      section > div > a {
+        /* padding: 5px; */
+        height: 20px;
+        width: 20px;
+        border-radius: 50%;
+        border: 2px solid black;
+        background-color: goldenrod;
+        text-decoration: none;
+        color: black;
+      }
+
+      #main:target .door1 {
+        transform: translateX(-400px);
+        opacity: 0;
+      }
+      #main:target .door2 {
+        transform: translateX(400px);
+        opacity: 0;
+      }#main:target article {
+        opacity: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <main id="main">
+      <article>
+        <h1>Happy Birthday!</h1>
+        <p>Wishing you a day full of happiness and joy!</p>
+      </article>
+      <section>
+        <div class="door1"></div>
+        <div class="door2">
+          <a href="#main"> </a>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

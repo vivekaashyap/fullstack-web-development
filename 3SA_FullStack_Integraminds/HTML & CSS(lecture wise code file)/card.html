@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+        }
+        figure {
+            padding: 50px;
+            background-color: bisque;
+            /* flex-wrap: wrap; */
+            display: flex;
+            /* height: 400px; */
+            width: 80vw;
+            gap: 30px;
+            /* box-sizing: border-box; */
+            align-items: center;
+            border: 3px solid red ;
+            border-radius: 30px;
+        }
+        @media(max-width:800px){
+            figure{
+                flex-wrap: wrap;
+            }
+        }
+        img{
+            width: 100%;
+            height: 300px;
+            border-radius: 30px;
+        }
+        figcaption{
+            text-align: center;
+            font-size: 40px;
+        }
+        p{
+            font-size: 18px;
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+    </style>
+</head>
+
+<body>
+    <figure>
+        <img src="../img/Deer.jpg">
+        <div>
+            <figcaption>Deer</figcaption>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Excepturi alias veritatis similique officia
+                neque
+                eius nihil necessitatibus in voluptatibus illum, architecto et magnam quaerat. Minus aliquam fugiat
+                repudiandae alias, laborum omnis consequuntur doloremque modi in sapiente nemo sed velit, earum
+                repellendus
+                quo nesciunt vero maiores facilis sit vel fugit dolore molestias saepe. Eveniet voluptatem autem
+                laboriosam
+            </p>
+        </div>
+    </figure>
+</body>
+
+</html>
