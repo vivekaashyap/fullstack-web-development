@@ -1,0 +1,18 @@
+@'
+# Python cache
+__pycache__/
+*.py[cod]
+.venv/
+
+# Build artifacts
+build/
+dist/
+
+# Generated data and reports
+dashboard/*.db
+dashboard/*.pdf
+data/scan_results.json
+
+# Local backup
+*.bundle
+'@ | Add-Content Projects/mini_project-01/.gitignore

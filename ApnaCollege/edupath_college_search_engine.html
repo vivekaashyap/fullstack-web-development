@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduPath | Discover Your Dream College</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0f7ff',
+                            100: '#e0effe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            900: '#1e3a8a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased flex flex-col min-h-screen">
+
+    <!-- ========================================== -->
+    <!-- 1. HEADER & NAVIGATION                     -->
+    <!-- ========================================== -->
+    <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200 transition-all duration-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-2 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-700 to-cyan-500 flex items-center justify-center text-white font-bold text-xl shadow-md group-hover:scale-105 transition-transform">
+                    <i class="fa-solid font-bold fa-graduation-cap"></i>
+                </div>
+                <span class="text-2xl font-extrabold tracking-tight bg-gradient-to-r from-brand-900 to-brand-600 bg-clip-text text-transparent">EduPath</span>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
+                <a href="#hero" class="hover:text-brand-600 transition-colors">Home</a>
+                <a href="#search-section" class="hover:text-brand-600 transition-colors">Explore Colleges</a>
+                <a href="#stats-section" class="hover:text-brand-600 transition-colors">Why Us</a>
+                <a href="#contact" class="hover:text-brand-600 transition-colors">Contact</a>
+            </nav>
+
+            <!-- Saved Colleges Trigger Button -->
+            <div class="flex items-center gap-3">
+                <button id="open-saved-btn" onclick="toggleSavedDrawer(true)" class="relative flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium text-sm transition-all border border-slate-200">
+                    <i class="fa-solid fa-heart text-rose-500"></i>
+                    <span class="hidden sm:inline">Saved</span>
+                    <span id="saved-count-badge" class="ml-1 bg-brand-600 text-white text-xs font-bold px-2 py-0.5 rounded-full">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <!-- ========================================== -->
+        <!-- 2. HERO SECTION                            -->
+        <!-- ========================================== -->
+        <section id="hero" class="relative bg-gradient-to-b from-brand-900 via-brand-900 to-slate-900 text-white py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+            <!-- Background Decorative Blur Rings -->
+            <div class="absolute -top-40 -right-40 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-brand-500/20 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="max-w-4xl mx-auto text-center relative z-10">
+                <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-brand-500/20 text-cyan-300 border border-cyan-500/30 mb-6">
+                    <i class="fa-solid fa-sparkles text-cyan-400"></i> Simplify Your Higher Education Journey
+                </span>
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight mb-6">
+                    Find Your Dream College <br class="hidden sm:inline"><span class="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">Faster & Smarter</span>
+                </h1>
+                <p class="text-slate-300 text-lg sm:text-xl max-w-2xl mx-auto mb-10 font-light">
+                    Search over top global & national universities, filter by tuition, streams, ratings, and save your favorites all in one place.
+                </p>
+
+                <!-- Hero Direct Search Bar -->
+                <div class="max-w-2xl mx-auto bg-white p-2 rounded-2xl shadow-2xl flex flex-col sm:flex-row gap-2 border border-slate-100">
+                    <div class="relative flex-grow flex items-center">
+                        <i class="fa-solid fa-magnifying-glass absolute left-4 text-slate-400"></i>
+                        <input type="text" id="hero-search-input" placeholder="Search by college name, city, or major..." class="w-full pl-11 pr-4 py-3.5 text-slate-800 placeholder-slate-400 bg-transparent rounded-xl outline-none focus:ring-0 text-sm sm:text-base">
+                    </div>
+                    <button onclick="scrollToSearch()" class="w-full sm:w-auto px-8 py-3.5 bg-brand-600 hover:bg-brand-700 text-white font-semibold rounded-xl transition-all shadow-md shadow-brand-600/30 flex items-center justify-center gap-2">
+                        Explore <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- 3. SEARCH & MULTI-FILTER SECTION           -->
+        <!-- ========================================== -->
+        <section id="search-section" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <!-- Filter Container Box -->
+            <div class="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200/80 shadow-sm mb-10">
+                <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-6 pb-6 border-b border-slate-100">
+                    <div>
+                        <h2 class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                            <i class="fa-solid fa-sliders text-brand-600"></i> Filter & Discover
+                        </h2>
+                        <p class="text-slate-500 text-xs sm:text-sm mt-1">Refine options based on location, stream, fee, and institutional type.</p>
+                    </div>
+                    <!-- Clear Filters Button -->
+                    <button id="clear-filters-btn" onclick="resetFilters()" class="self-start lg:self-center text-xs font-semibold text-rose-600 hover:text-rose-700 bg-rose-50 hover:bg-rose-100 px-3.5 py-2 rounded-lg transition-colors flex items-center gap-1.5">
+                        <i class="fa-solid fa-rotate-left"></i> Reset All Filters
+                    </button>
+                </div>
+
+                <!-- Filters Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <!-- Text Search Filter -->
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 mb-1.5">Keywords</label>
+                        <div class="relative">
+                            <i class="fa-solid fa-search absolute left-3 top-3 text-slate-400 text-xs"></i>
+                            <input type="text" id="filter-keyword" placeholder="Name, course or city..." class="w-full pl-9 pr-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm focus:bg-white focus:border-brand-500 focus:outline-none transition-all">
+                        </div>
+                    </div>
+
+                    <!-- Stream / Degree Filter -->
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 mb-1.5">Stream / Specialization</label>
+                        <select id="filter-stream" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm text-slate-700 focus:bg-white focus:border-brand-500 focus:outline-none transition-all">
+                            <option value="">All Streams</option>
+                            <option value="Engineering">Engineering</option>
+                            <option value="Computer Science">Computer Science</option>
+                            <option value="Business">Business / Management</option>
+                            <option value="Medicine">Medicine & Healthcare</option>
+                            <option value="Arts">Arts & Humanities</option>
+                        </select>
+                    </div>
+
+                    <!-- Location / Country Filter -->
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 mb-1.5">Location</label>
+                        <select id="filter-location" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm text-slate-700 focus:bg-white focus:border-brand-500 focus:outline-none transition-all">
+                            <option value="">All Locations</option>
+                            <option value="India">India</option>
+                            <option value="USA">USA</option>
+                            <option value="UK">UK</option>
+                        </select>
+                    </div>
+
+                    <!-- Type Filter (Public/Private) -->
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 mb-1.5">Institution Type</label>
+                        <select id="filter-type" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm text-slate-700 focus:bg-white focus:border-brand-500 focus:outline-none transition-all">
+                            <option value="">All Types</option>
+                            <option value="Public">Public / Government</option>
+                            <option value="Private">Private</option>
+                        </select>
+                    </div>
+
+                    <!-- Max Fee Range Filter -->
+                    <div class="sm:col-span-2">
+                        <div class="flex justify-between items-center mb-1.5">
+                            <label class="text-xs font-semibold text-slate-600">Max Annual Tuition ($/year)</label>
+                            <span id="fee-range-display" class="text-xs font-bold text-brand-600">$60,000</span>
+                        </div>
+                        <input type="range" id="filter-fee" min="5000" max="60000" step="2500" value="60000" class="w-full accent-brand-600 cursor-pointer">
+                    </div>
+
+                    <!-- Min Rating Filter -->
+                    <div class="sm:col-span-2">
+                        <label class="block text-xs font-semibold text-slate-600 mb-1.5">Minimum Rating</label>
+                        <select id="filter-rating" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm text-slate-700 focus:bg-white focus:border-brand-500 focus:outline-none transition-all">
+                            <option value="0">Any Rating</option>
+                            <option value="4.5">4.5 Stars & above</option>
+                            <option value="4.7">4.7 Stars & above</option>
+                            <option value="4.8">4.8 Stars & above</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ========================================== -->
+            <!-- 4. RESULTS STATS & COLLEGE CARDS GRID     -->
+            <!-- ========================================== -->
+            <div class="flex justify-between items-center mb-6">
+                <p class="text-sm font-medium text-slate-500">
+                    Showing <span id="results-count" class="font-bold text-slate-900">0</span> Colleges
+                </p>
+            </div>
+
+            <!-- Grid Container -->
+            <div id="colleges-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Dynamic cards populated via JS -->
+            </div>
+
+            <!-- Empty Results Placeholder -->
+            <div id="no-results" class="hidden text-center py-16 bg-white rounded-2xl border border-dashed border-slate-300">
+                <div class="w-16 h-16 bg-slate-100 text-slate-400 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">
+                    <i class="fa-solid fa-building-columns"></i>
+                </div>
+                <h3 class="text-lg font-bold text-slate-800">No Colleges Match Your Criteria</h3>
+                <p class="text-slate-500 text-xs sm:text-sm mt-1 max-w-sm mx-auto">Try adjusting your filters or resetting your search keyword.</p>
+                <button onclick="resetFilters()" class="mt-4 px-4 py-2 bg-brand-600 text-white rounded-xl text-xs font-semibold hover:bg-brand-700 transition-colors">
+                    Reset All Filters
+                </button>
+            </div>
+        </section>
+
+        <!-- Stats / Features Banner -->
+        <section id="stats-section" class="bg-slate-100 border-y border-slate-200 py-12 my-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200/60">
+                    <p class="text-3xl font-extrabold text-brand-600 mb-1">500+</p>
+                    <p class="text-xs sm:text-sm font-medium text-slate-600">Verified Campuses</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200/60">
+                    <p class="text-3xl font-extrabold text-brand-600 mb-1">98%</p>
+                    <p class="text-xs sm:text-sm font-medium text-slate-600">Placement Assistance</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200/60">
+                    <p class="text-3xl font-extrabold text-brand-600 mb-1">50k+</p>
+                    <p class="text-xs sm:text-sm font-medium text-slate-600">Student Reviews</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200/60">
+                    <p class="text-3xl font-extrabold text-brand-600 mb-1">100%</p>
+                    <p class="text-xs sm:text-sm font-medium text-slate-600">Free Search Engine</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ========================================== -->
+    <!-- 5. SAVED COLLEGES DRAWER (SLIDE-OVER)      -->
+    <!-- ========================================== -->
+    <div id="saved-drawer-backdrop" onclick="toggleSavedDrawer(false)" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+    <aside id="saved-drawer" class="fixed right-0 top-0 bottom-0 w-full max-w-md bg-white z-50 shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col">
+        <!-- Drawer Header -->
+        <div class="p-6 border-b border-slate-200 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <i class="fa-solid fa-heart text-rose-500 text-lg"></i>
+                <h3 class="font-bold text-slate-900 text-lg">Saved Colleges</h3>
+            </div>
+            <button onclick="toggleSavedDrawer(false)" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-500 hover:text-slate-700 transition-colors">
+                <i class="fa-solid fa-xmark text-sm"></i>
+            </button>
+        </div>
+
+        <!-- Drawer Content Body -->
+        <div id="saved-list-container" class="flex-grow p-6 overflow-y-auto space-y-4">
+            <!-- Dynamically injected saved items -->
+        </div>
+
+        <!-- Drawer Footer -->
+        <div class="p-4 border-t border-slate-200 bg-slate-50">
+            <button onclick="clearSavedColleges()" class="w-full py-2.5 text-xs font-semibold text-slate-500 hover:text-rose-600 transition-colors border border-slate-200 rounded-xl hover:border-rose-200 hover:bg-rose-50">
+                Clear All Bookmarks
+            </button>
+        </div>
+    </aside>
+
+    <!-- ========================================== -->
+    <!-- 6. COLLEGE DETAILS MODAL                   -->
+    <!-- ========================================== -->
+    <div id="modal-backdrop" onclick="closeModal()" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300 flex items-center justify-center p-4">
+        <div id="modal-card" onclick="event.stopPropagation()" class="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-slate-100 transform scale-95 transition-all duration-300 relative">
+            
+            <!-- Close Icon -->
+            <button onclick="closeModal()" class="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-white/80 hover:bg-white shadow text-slate-600 hover:text-slate-900 flex items-center justify-center transition-colors">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <!-- Modal Body injected via JS -->
+            <div id="modal-content"></div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-6 right-6 bg-slate-900 text-white px-5 py-3 rounded-xl shadow-xl z-50 opacity-0 pointer-events-none transition-all duration-300 flex items-center gap-3 border border-slate-700 text-xs sm:text-sm">
+        <i id="toast-icon" class="fa-solid fa-circle-check text-emerald-400"></i>
+        <span id="toast-msg">Saved to your list</span>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- FOOTER                                     -->
+    <!-- ========================================== -->
+    <footer id="contact" class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800 text-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-lg bg-brand-600 flex items-center justify-center text-white font-bold text-sm">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <span class="text-xl font-bold text-white">EduPath</span>
+            </div>
+            <p class="text-xs text-slate-500">© 2026 EduPath Platform. Built for prospective students worldwide.</p>
+            <div class="flex gap-4">
+                <a href="#" class="hover:text-white transition-colors"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#" class="hover:text-white transition-colors"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="#" class="hover:text-white transition-colors"><i class="fa-brands fa-github"></i></a>
+            </div>
+        </div>
+    </footer>  
+</body>
+</html>
