@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button {
+            background-color: blue;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>JavaScript Events</h2>
+
+    <button id="alert">Click Me</button>
+    <div id="box" style="padding: 20px; background: lightblue; margin: 10px 0;">
+        Move your mouse over this box
+    </div>
+
+    <input type="text" id="keyInput" placeholder="Type something">
+
+    <form id="myForm">
+        <input type="text" id="username" placeholder="Enter username" required>
+        <input type="email" id="email" placeholder="Enter email" required>
+        <button id="prompt" type="button">Submit</button>
+    </form>
+</body>
+<script>
+    function alertButton() {
+        alert("Hello Your Name...");
+    }
+    function promptButton() {
+        prompt("Enter your Name...");
+    }
+    var btnA = document.querySelectorAll("button");
+    var btnB = document.getElementsByTagName('button');
+    console.log('query', btnA)
+    console.log('tagName', btnB)
+
+    btnA[0].innerHTML = "This is a Alert button";
+    btnB[1].innerHTML = "This is a prompt button";
+
+
+    const aButton = document.getElementById('alert');
+    const bButton = document.querySelector('#prompt');
+    console.log(aButton, bButton);
+
+    // element.addEventListner(event, () => {
+    // )   
+
+
+    aButton.addEventListener('click', alertButton);
+    bButton.addEventListener('click', promptButton);
+
+</script>
+
+</html>
