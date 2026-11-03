@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #cont{
+            display: flex;
+            flex-wrap: wrap;
+        }
+      figure {
+        width: 500px;
+        background-color: aliceblue;
+        box-shadow: 0px 0px 15px black;
+        border-radius: 10px;
+        box-sizing: border-box;
+      }
+      figure img {
+        width: 100%;
+      }
+      figure div {
+        padding: 20px;
+        text-align: center;
+      }
+      figcaption {
+        font-size: xx-large;
+        font-weight: 500;
+      }
+
+      a {
+        text-decoration: none;
+        color: black;
+        background-color: aqua;
+        padding: 10px;
+      }
+    </style>
+</head>
+
+<body>
+    <div id="cont">
+    </div>
+
+    <script>
+        const places = [
+            {
+                id: 1,
+                img: "https://images.unsplash.com/photo-1564507592333-c60657eea523",
+                placename: "Taj Mahal",
+                description: "A magnificent white marble monument in Agra, built by Shah Jahan in memory of his wife Mumtaz Mahal.",
+                location: "https://www.google.com/maps/search/?api=1&query=Taj+Mahal+Agra",
+            },
+            {
+                id: 2,
+                img: "https://images.unsplash.com/photo-1599661046827-dacff0c0f09a",
+                placename: "Hawa Mahal",
+                description: "A beautiful five-story palace in Jaipur, famous for its unique honeycomb-like facade and pink sandstone architecture.",
+                location: "https://www.google.com/maps/search/?api=1&query=Hawa+Mahal+Jaipur",
+            },
+            {
+                id: 3,
+                img: "https://images.unsplash.com/photo-1606293926075-69a00dbfde81",
+                placename: "Golden Temple",
+                description: "A sacred Sikh shrine in Amritsar, known for its golden architecture and peaceful atmosphere.",
+                location: "https://www.google.com/maps/search/?api=1&query=Golden+Temple+Amritsar",
+            },
+            {
+                id: 4,
+                img: "https://images.unsplash.com/photo-1514222134-b57cbb8ce073",
+                placename: "India Gate",
+                description: "A historic war memorial in New Delhi, dedicated to Indian soldiers who lost their lives during World War I.",
+                location: "https://www.google.com/maps/search/?api=1&query=India+Gate+Delhi",
+            },
+            {
+                id: 5,
+                img: "https://images.unsplash.com/photo-1548013146-72479768bada",
+                placename: "Qutub Minar",
+                description: "A UNESCO World Heritage Site in Delhi, famous for its impressive 73-meter-high minaret and Indo-Islamic architecture.",
+                location: "https://www.google.com/maps/search/?api=1&query=Qutub+Minar+Delhi",
+            },
+            {
+                id: 6,
+                img: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944",
+                placename: "Munnar",
+                description: "A scenic hill station in Kerala, known for its lush tea plantations, misty mountains, and beautiful valleys.",
+                location: "https://www.google.com/maps/search/?api=1&query=Munnar+Kerala",
+            },
+            {
+                id: 7,
+                img: "https://images.unsplash.com/photo-1593693411515-c20261bcad6e",
+                placename: "Goa Beaches",
+                description: "A popular coastal destination offering golden beaches, water sports, vibrant nightlife, and Portuguese heritage.",
+                location: "https://www.google.com/maps/search/?api=1&query=Calangute+Beach+Goa",
+            },
+            {
+                id: 8,
+                img: "https://images.unsplash.com/photo-1595815771614-ade9d652a65d",
+                placename: "Dal Lake",
+                description: "A beautiful lake in Srinagar, famous for its traditional houseboats, colorful shikaras, and surrounding Himalayan scenery.",
+                location: "https://www.google.com/maps/search/?api=1&query=Dal+Lake+Srinagar",
+            },
+            {
+                id: 9,
+                img: "https://images.unsplash.com/photo-1590050752117-23a9d7fc6c21",
+                placename: "Hampi",
+                description: "An ancient historical site in Karnataka, known for its magnificent Vijayanagara Empire ruins and impressive stone temples.",
+                location: "https://www.google.com/maps/search/?api=1&query=Hampi+Karnataka",
+            },
+            {
+                id: 10,
+                img: "https://images.unsplash.com/photo-1544735716-392fe2489ffa",
+                placename: "Varanasi Ghats",
+                description: "A historic spiritual destination on the banks of the Ganges, famous for its ancient temples and evening Ganga Aarti.",
+                location: "https://www.google.com/maps/search/?api=1&query=Dashashwamedh+Ghat+Varanasi",
+            },
+        ];
+
+        document.querySelector('#cont').innerHTML = places.map((data) => {
+            return `
+                <figure>
+                    <img src="${data.img}" alt="${data.placename}">
+                    <figcaption>${data.placename}</figcaption>
+                    <div>
+                        <p>${data.description}</p>
+                        <a href="${data.location}" target="_blank">View Location</a>
+                    </div>
+                </figure>`;
+        }).join('');
+    </script>
+</body>
+</html>
