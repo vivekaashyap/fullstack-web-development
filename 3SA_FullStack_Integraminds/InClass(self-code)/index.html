@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button onclick="ApiCall()">Call Api</button>
+</body>
+<script>
+    var ApiCall = async() => {
+        $.ajax({
+            url: "https://dummyjson.com/products",
+            method: "GET",
+            contentType: "json",
+            success: (data) => {
+                console.log(data);
+            },
+            error: (e) => {
+                console.log(e);
+            }
+        });
+    }
+</script>
+
+</html>

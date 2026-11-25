@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>jQuery - Syntax, Selectors and DOM Manipulation</title>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  </head>
+  <body>
+    <h1>JQuery</h1>
+    <p id="Para1" class="Paras">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde,
+      consectetur.
+    </p>
+    <p id="Para2" class="Paras">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde,
+      consectetur.
+    </p>
+    <p class="Paras">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde,
+      consectetur.
+    </p>
+    <p class="Paras">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde,
+      consectetur.
+    </p>
+    <button id="hide">Hide Para1</button>
+    <button id="show">Show Para1</button>
+
+    <hr/>
+    <hr/>
+    <div id="cont" style="background-color: Lightblue;">
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde,
+            consectetur. Voluptatibus, voluptatum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde,
+            consectetur. Voluptatibus, voluptatum.
+        </p>
+    </div>
+    <button id="ac">Add Class</button>
+    <button id="rc">Remove Class</button>
+    <button id="tc">Toggle Class</button>
+  </body>
+  <script>
+    // ==========================================
+    // 1. JQUERY BASIC SYNTAX
+    // ==========================================
+    console.log($("H1"));
+    // jQuery syntax:
+    // $(selector).action();
+
+    // $ is the jQuery function.
+    // selector selects HTML elements.
+    // action performs an operation on selected elements.
+
+    // Wait until the HTML document is fully loaded.
+
+    // ==========================================
+    // 2. JQUERY SELECTORS
+    // ==========================================
+
+    $(document).ready(() => {
+      // ID Selector
+      // Selects an element using its ID.
+
+      $("#Para1").text("<i>jbkcjwecnwefn</i>");
+      //  document.querySelector("#Para1").innerText = "hvjdcbskjc";
+
+      $("#Para2").html("<i>jbkcjwecnwefn</i>");
+      // Class Selector
+      // Selects all elements having the specified class.
+
+      $(".Paras").css("color", "red");
+      $(".Paras").css({
+        color: "red",
+        lineHeight: 1.6,
+      });
+
+      // Element Selector
+      // Selects all paragraph elements.
+      $("p").css({
+        color: "red",
+        lineHeight: 1.6,
+      });
+      // Universal Selector
+      // Selects all HTML elements.
+      // $("*").css("margin", "5px");
+
+      // Group Selector
+      // Selects multiple types of elements.
+      $("h1,h2");
+
+      // Attribute Selector
+      // Selects elements based on attributes.
+      $("[href]");
+
+      // ==========================================
+      // 3. CLICK EVENTS WITH JQUERY
+      // ==========================================
+      // click() executes when an element is clicked.
+      $("#hide").click(() => {
+        $("#Para1").hide();
+      });
+
+      // Hide all paragraphs.
+      $("#show").click(() => {
+        $("#Para1").show();
+      });
+      // Show all paragraphs.
+
+      // ==========================================
+      // 4. GET AND SET CONTENT
+      // ==========================================
+      // text() gets or sets text content.
+
+      // html() gets or sets HTML content.
+
+      // ==========================================
+      // 5. ADDING ELEMENTS
+      // ==========================================
+      // append() adds content at the end.
+      $("#cont").append("<h3>This is the Article Heading</h3>");
+      $("#cont").appendTo($("#h1"));
+      // prepend() adds content at the beginning.
+      $("#cont").prepend("<h3>Hello</h3>");
+      $("#cont").prependTo($("#h1"));
+
+      // ==========================================
+      // 6. REMOVING ELEMENTS
+      // ==========================================
+      // empty() removes child elements but keeps the parent.
+        $("#cont").empty();
+
+      // remove() removes the selected element itself.
+        $("#cont").remove();
+      // ==========================================
+      // 7. CSS MANIPULATION
+      // ==========================================
+      // css() gets or sets CSS properties.
+        
+      // addClass() adds a CSS class.
+
+      // removeClass() removes a CSS class.
+
+      // toggleClass() adds or removes a class.
+
+      // ==========================================
+      // 8. GETTING AND SETTING INPUT VALUES
+      // ==========================================
+      // val() gets or sets input values.
+
+      // =====================================
+      // 5. TOGGLE
+      // =====================================
+      // toggle() switches between hide and show.
+
+      // =====================================
+      // 6. FADE EFFECTS
+      // =====================================
+      // fadeOut() gradually hides an element.
+
+      // fadeIn() gradually displays an element.
+
+      // fadeToggle() switches between fadeIn and fadeOut.
+
+      // fadeTo() changes the opacity of an element.
+
+      // First argument: duration.
+      // Second argument: opacity (0 to 1).
+      // =====================================
+      // 7. SLIDE EFFECTS
+      // =====================================
+      // slideUp() hides an element with an upward motion.
+
+      // slideDown() displays an element with a downward motion.
+
+      // slideToggle() switches between slideUp and slideDown.
+
+      // ==========================================
+      // 9. DOM TRAVERSING
+      // ==========================================
+      // parent() selects the direct parent.
+
+      // children() selects direct child elements.
+
+      // first() selects the first matched element.
+
+      // last() selects the last matched element.
+    });
+  </script>
+</html>
